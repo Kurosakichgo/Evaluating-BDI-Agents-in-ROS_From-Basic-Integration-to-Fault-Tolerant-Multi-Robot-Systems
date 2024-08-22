@@ -1,9 +1,16 @@
 Firstly, the system needs to run on Unbuntu22.04
+
 1 sudo apt update
+
 2 sudo apt install ros - humble - desktop
+
 3 sudo apt install ros - humble - turtlebot3 *
+
 4 sudo apt install python3 - colcon - common - extensions
+
 5 sudo apt install ros - humble - rosbridge - server
+
+
 6 sudo apt install ros - humble - gzebo *
 7 sudo apt install python3
 8 sudo apt install openjdk -17 - jdk
