@@ -22,7 +22,7 @@ Download the Jason platform from the official website: Jason Download.
 
 Unzip the downloaded file to your preferred directory.
 
-Ensure that jasn.jar is included in the class path:
+Ensure that jason.jar is included in the class path:
 
 1 export CLASSPATH = $CLASSPATH :/ path / to / jason / jason . jar
 
