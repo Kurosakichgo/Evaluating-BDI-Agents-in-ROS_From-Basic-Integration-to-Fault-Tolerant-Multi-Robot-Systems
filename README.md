@@ -52,7 +52,7 @@ Jason
 
 Run Jason code:
 
-1 ./ gradlew
+1 ./ gradlew(install gradle in VScode before run this code)
 
 Python
 
