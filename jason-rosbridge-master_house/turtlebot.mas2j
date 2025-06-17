@@ -1,0 +1,12 @@
+MAS turtlebot {
+
+	infrastructure: Centralised
+
+	environment: RosEnv
+
+	agents:
+		agent;
+
+	aslSourcePath:
+		"src/asl";
+}
