@@ -1,6 +1,7 @@
 goal(goal1, 2.5, 1.0).
 goal(goal2, -6.0, -0.5).
 goal(goal3, 5.0, 1.0).
+goal(goal4, -6.0, 0.5).
 vl(0).
 bids([]).
 agents([agent1,agent2,agent3,agent4,agent5,agent6]).
