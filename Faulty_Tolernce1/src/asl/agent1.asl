@@ -8,28 +8,39 @@ paused_goal(none,0,0).
 .print("Agent1 received goal: (", GX, ", ", GY, ")");
 ?my_position(X, Y);
 ?my_name(A);
-calculate_distance_for_bid( X, Y, GX, GY, A, GoalId).
+calculate_distance_for_bid( X, Y, GX, GY, A).
 
 
-+distance(GoalId, A, GX, GY, Distance) <-
-.send(coordinator, tell, bid(A, GoalId, GX, GY, Distance)).
++distance(A, GX, GY, Distance) <-
+.send(coordinator, tell, bid(A, GX, GY, Distance)).
 
-+assign_goal(GoalId, GX, GY) <-
++assign_goal(GX, GY) <-
     .print("Agent1 assigned to goal: (", GX, ",", GY, ")");
+    -current_goal(_, _);
+    +current_goal(GX, GY);
     send_goal(GX, GY, "tb1").
  
++failure_event(FailedAgent, X, Y)  : FailedAgent \== self  <-
+    .print("Agent1: failure of", FailedAgent, "for goal");
+    ?current_goal(CX, CY);
+    -current_goal(CX, CY);
+    +paused_goal(CX, CY);
+    ?my_position(GX, GY);
+    ?my_name(A);
+    calculate_distance_for_bid_f(GX, GY, X, Y, A).
+    
++distance_f(A, GX, GY, Distance) <-
+    .send(coordinator, tell, bid_f(A, GX, GY, Distance)).
+
++rescue(GX, GY) <-
+    .print("Agent1: executing rescue for goal: (", GX, ",", GY, ")");
+    send_goal(GX, GY, "tb1");
+    wait(3000);
+    ?paused_goal(PX, PY);
+    -paused_goal(PX, PY);
+    -current_goal(_, _);
+    +current_goal(PX, PY);
+    send_goal(PX, PY, "tb1");
+    -current_goal(X, Y).
 
 
-/* 2. 救援计划：收到 rescue 事件后，挂起原意图，切换到救援 */
-+rescue(Agent, GoalId, X, Y) : Agent == id <-
-    .print("Agent", id, "rescues goal", GoalId);           
-    !navigate_rescue(X, Y).          
-
-+!navigate_rescue(X, Y) <-
-    .print("Agent", id, "going to rescue at", X, Y);
-    send_goal(X, Y, id);
-    .print("Agent", id, "rescue complete").
-
-+resume(Agent, GoalId) : Agent == id <-
-    .print("Agent", id, "resume goal", GoalId);
-    !navigate(GoalId).                  
