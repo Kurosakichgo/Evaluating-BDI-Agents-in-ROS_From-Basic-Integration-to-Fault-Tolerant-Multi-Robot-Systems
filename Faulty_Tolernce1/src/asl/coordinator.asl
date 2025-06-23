@@ -77,7 +77,6 @@ if (Len == 35) {
     .send(agent5, tell, goal(goal6,  6.0, 3.0));
     .send(agent6, tell, goal(goal6,  6.0, 3.0)).
 
-/* 1. 感知到环境中新增的 failure_event */
 
     
 @plan2[atomic]
