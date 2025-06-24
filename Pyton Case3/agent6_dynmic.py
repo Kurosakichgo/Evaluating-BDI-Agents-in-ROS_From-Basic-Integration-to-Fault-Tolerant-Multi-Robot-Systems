@@ -11,7 +11,7 @@ class Agent(Node):
         super().__init__('agent6')
         self.name = 'agent6'
         # 初始位姿，用于拍卖距离计算
-        self.initial_pos = (7, 6)
+        self.initial_pos = (4.2, 1.5)
         self.current_target = None
         self._pending_resume = None
 
