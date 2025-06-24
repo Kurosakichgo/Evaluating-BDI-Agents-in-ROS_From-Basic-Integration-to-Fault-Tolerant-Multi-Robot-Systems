@@ -8,7 +8,7 @@ class DynamicCoordinator(Node):
     def __init__(self):
         super().__init__('dynamic_coordinator')
         # 初始目标和代理
-        self.targets = [(1,1), (2,2), (3,6), (4,2), (5,3), (7,7)]
+        self.targets = [(2.5,1.0), (-6.0, -0.5), (5.0, 1.0), (5.0, -2.0), (-5.5, 2.0), (0.5, -2.0)]
         self.agents = ['agent1','agent2','agent3','agent4','agent5','agent6']
         self.active = list(self.agents)
         self.assigned = {}
